@@ -1,0 +1,26 @@
+import React from 'react';
+import {Button, TextField, Typography} from "@mui/material";
+import {IPropsLogin} from "../../../common/types/auth";
+
+const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
+    const {setPassword, setEmail, navigate} = props
+    return (
+        <>
+            <Typography variant="h2" fontFamily='Poppins' textAlign='center'>
+               Авторизація
+            </Typography>
+            <Typography variant="body1" marginBottom={5} fontFamily='Poppins' textAlign='center'>
+               Введіть ваш логін і пароль
+            </Typography>
+            <TextField fullWidth={true} margin='normal' label="Email" variant="outlined" placeholder='Введіть ваш email' onChange={(e) => setEmail(e.target.value)}/>
+            <TextField type='password' fullWidth={true} margin='normal' label="Password" variant="outlined" placeholder='Введіть ваш пароль' onChange={(e) => setPassword(e.target.value)}/>
+            <Button type='submit' sx={{fontFamily: 'Poppins', marginTop: 2, marginBottom: 2, width: '60%', }} variant="contained">Ввійти</Button>
+            <Typography variant="body1"  sx={{fontFamily:'Poppins', }}>
+             У вас нема аккаунту?<span className='incitingText' onClick={() => navigate('/register')}>Реєстрація</span>
+            </Typography>
+
+        </>
+    );
+};
+
+export default LoginPage;
